@@ -1,4 +1,4 @@
-import { Category, Home, Info, LocalOffer } from "@mui/icons-material";
+import { Category, Delete, Home, Info, LocalOffer } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Avatar, Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -51,19 +51,22 @@ export const SideItemDrawer = ({ children }: SideItemDrawerProps) => {
         <Typography variant="h6">John Doe</Typography>
       </Stack>
       <List>
-        {["Home", "Categories", "Tags ", "About"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index === 0 && <Home />}
-                {index === 1 && <Category />}
-                {index === 2 && <LocalOffer />}
-                {index === 3 && <Info />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {["Home", "Categories", "Tags ", "Archives", "About"].map(
+          (text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index === 0 && <Home />}
+                  {index === 1 && <Category />}
+                  {index === 2 && <LocalOffer />}
+                  {index === 3 && <Delete />}
+                  {index === 4 && <Info />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
     </Box>
   );
