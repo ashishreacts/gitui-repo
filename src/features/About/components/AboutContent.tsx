@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { SkillList } from "./SkillList";
 
-export const About = () => {
+export const AboutContent = () => {
   return (
     <Card>
       <CardHeader title={<Typography variant="h4">About</Typography>} />

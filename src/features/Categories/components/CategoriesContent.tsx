@@ -1,7 +1,7 @@
 import { Folder } from "@mui/icons-material";
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 
-export const Categories = () => {
+export const CategoriesContent = () => {
   return (
     <Card>
       <CardHeader title={<Typography variant="h4">Categories</Typography>} />

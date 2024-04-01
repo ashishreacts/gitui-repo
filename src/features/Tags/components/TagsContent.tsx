@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export const Tags = () => {
+export const TagsContent = () => {
   return (
     <Card>
       <CardHeader title={<Typography variant="h6"> Tags</Typography>} />
