@@ -8,9 +8,15 @@ import {
   TimelineSeparator,
   timelineOppositeContentClasses,
 } from "@mui/lab";
-import { Link, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const TimelineData = () => {
+  const navigate = useNavigate();
+
+  const nextPageHandler = () => {
+    navigate("/archives/opensource");
+  };
   return (
     <Timeline
       sx={{
@@ -37,7 +43,9 @@ export const TimelineData = () => {
           <TimelineDot />
         </TimelineSeparator>
         <TimelineContent>
-          <Link>My Open Source Contributions</Link>
+          <Button variant="text" onClick={nextPageHandler}>
+            My Open Source Contributions
+          </Button>
         </TimelineContent>
       </TimelineItem>
     </Timeline>

@@ -11,9 +11,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
+type SideNavigationItem = {
+  name: string;
+  to: string;
+};
 type SideItemDrawerProps = {
   children: React.ReactNode;
 };
@@ -21,6 +26,14 @@ type SideItemDrawerProps = {
 export const SideItemDrawer = ({ children }: SideItemDrawerProps) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+
+  const navigation: SideNavigationItem[] = [
+    { name: "Home", to: "home" },
+    { name: "Categories", to: "category" },
+    { name: "Tags", to: "tags" },
+    { name: "Archives", to: "archives" },
+    { name: "About", to: "about" },
+  ];
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -51,22 +64,28 @@ export const SideItemDrawer = ({ children }: SideItemDrawerProps) => {
         <Typography variant="h6">John Doe</Typography>
       </Stack>
       <List>
-        {["Home", "Categories", "Tags ", "Archives", "About"].map(
-          (text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index === 0 && <Home />}
-                  {index === 1 && <Category />}
-                  {index === 2 && <LocalOffer />}
-                  {index === 3 && <Delete />}
-                  {index === 4 && <Info />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+        {navigation.map((item, index) => (
+          <ListItem key={item.name} disablePadding>
+            <ListItemButton
+              component={Link}
+              to={item.to}
+              sx={{
+                minHeight: 48,
+                justifyContent: mobileOpen ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon>
+                {index === 0 && <Home />}
+                {index === 1 && <Category />}
+                {index === 2 && <LocalOffer />}
+                {index === 3 && <Delete />}
+                {index === 4 && <Info />}
+              </ListItemIcon>
+              <ListItemText primary={item.name} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );

@@ -1,11 +1,11 @@
-import { DisplayAboutContent } from "@/features/About";
-import { DisplayArchivesContent } from "@/features/Archives";
-import { DisplayCategoryContent } from "@/features/Categories";
-import { DisplayTagsContent } from "@/features/Tags";
 import { CreateGitRepoUI } from "@/features/gitUI";
 import { Landing } from "@/features/misc";
 import { RouteObject } from "react-router-dom";
 import { MainLayoutWrapper } from "./MainLayoutWrapper";
+import { DisplayAboutContent } from "@/features/About";
+import { DisplayArchivesContent } from "@/features/Archives";
+import { DisplayCategoryContent, OpenSource } from "@/features/Categories";
+import { DisplayTagsContent, TagsData } from "@/features/Tags";
 
 export const PublicRoutes: RouteObject[] = [
   {
@@ -14,40 +14,19 @@ export const PublicRoutes: RouteObject[] = [
     children: [{ path: "", element: <CreateGitRepoUI /> }],
   },
   {
-    path: "/about",
+    path: "/",
     element: <MainLayoutWrapper />,
     children: [
-      { path: "/about/aboutcontent/*", element: <DisplayAboutContent /> },
-    ],
-  },
-  {
-    path: "/archives",
-    element: <MainLayoutWrapper />,
-    children: [
-      {
-        path: "/archives/archivescontent/*",
-        element: <DisplayArchivesContent />,
-      },
-    ],
-  },
-  {
-    path: "/category",
-    element: <MainLayoutWrapper />,
-    children: [
-      {
-        path: "/category/categorycontent/*",
-        element: <DisplayCategoryContent />,
-      },
-    ],
-  },
-  {
-    path: "/tags",
-    element: <MainLayoutWrapper />,
-    children: [
-      {
-        path: "/tags/tagscontent/*",
-        element: <DisplayTagsContent />,
-      },
+      { path: "/home", element: <CreateGitRepoUI /> },
+      { path: "/about", element: <DisplayAboutContent /> },
+      { path: "/archives", element: <DisplayArchivesContent /> },
+      { path: "/category/*", element: <DisplayCategoryContent /> },
+      { path: "/category/opensource", element: <OpenSource /> },
+      { path: "/archives/opensource", element: <OpenSource /> },
+      { path: "/home/opensource", element: <OpenSource /> },
+      { path: "/tags", element: <DisplayTagsContent /> },
+      { path: "/tags/tagsdata", element: <TagsData /> },
+      { path: "/tags/tagsdata/opensource", element: <OpenSource /> },
     ],
   },
 

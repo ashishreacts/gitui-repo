@@ -1,9 +1,15 @@
 import { CalendarToday, FolderOpen, PushPin } from "@mui/icons-material";
 import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
+
+  const nextPageHandler = () => {
+    navigate("/home/opensource");
+  };
   return (
-    <Card>
+    <Card onClick={nextPageHandler} sx={{ cursor: "pointer" }}>
       <CardHeader
         title={
           <Typography variant="h6">My Open Source Contributions</Typography>
