@@ -125,9 +125,9 @@ export const SideItemDrawer = ({ children }: SideItemDrawerProps) => {
           {socialIcons.map((item, index) => (
             <Grid item md={3} key={index}>
               <ListItemIcon>
-                <a href={item.url} target="_blank">
+                <Link to={item.url} target="_blank">
                   {item.icon}
-                </a>
+                </Link>
               </ListItemIcon>
             </Grid>
           ))}
