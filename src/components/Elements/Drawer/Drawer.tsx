@@ -1,6 +1,18 @@
-import { Category, Delete, Home, Info, LocalOffer } from "@mui/icons-material";
+import {
+  Category,
+  Contrast,
+  Delete,
+  GitHub,
+  Home,
+  Info,
+  LinkedIn,
+  LocalOffer,
+  Mail,
+  RssFeed,
+  X,
+} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Avatar, Stack, Typography } from "@mui/material";
+import { Avatar, Grid, Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
@@ -35,6 +47,15 @@ export const SideItemDrawer = ({ children }: SideItemDrawerProps) => {
     { name: "About", to: "about" },
   ];
 
+  const socialIcons = [
+    { icon: <Contrast />, url: "" },
+    { icon: <GitHub />, url: "https://www.github.com" },
+    { icon: <LinkedIn />, url: "https://www.linkedin.com" },
+    { icon: <X />, url: "https://www.twitter.com" },
+    { icon: <Mail />, url: "https://www.gmail.com" },
+    { icon: <RssFeed />, url: "https://gambitier.github.io/feed.xml" },
+  ];
+
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);
@@ -52,7 +73,11 @@ export const SideItemDrawer = ({ children }: SideItemDrawerProps) => {
 
   const drawer = (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
     >
       <Toolbar />
       <Stack direction="column" spacing={2}>
@@ -86,6 +111,27 @@ export const SideItemDrawer = ({ children }: SideItemDrawerProps) => {
             </ListItemButton>
           </ListItem>
         ))}
+      </List>
+
+      <List
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          mt: 18,
+          p: 1,
+        }}
+      >
+        <Grid container spacing={1}>
+          {socialIcons.map((item, index) => (
+            <Grid item md={3} key={index}>
+              <ListItemIcon>
+                <a href={item.url} target="_blank">
+                  {item.icon}
+                </a>
+              </ListItemIcon>
+            </Grid>
+          ))}
+        </Grid>
       </List>
     </Box>
   );
