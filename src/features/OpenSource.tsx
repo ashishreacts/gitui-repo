@@ -8,6 +8,11 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import ReactMarkdown from "react-markdown";
+
+const MarkdownTypography = ({ children }) => {
+  return <Typography>{children}</Typography>;
+};
 
 export const OpenSource = () => {
   const sourceData = [
@@ -45,74 +50,80 @@ export const OpenSource = () => {
         "• Description: Reported a documentation-related issue regarding an integrityError related to a NOT NULL constraint failure.",
     },
   ];
+
   return (
     <Card>
       <CardHeader
         title={
-          <Typography variant="h6">My Open Source Contributions</Typography>
+          <MarkdownTypography>My Open Source Contributions</MarkdownTypography>
         }
       />
       <CardContent>
         <Stack direction="column">
-          <Typography variant="subtitle1">
+          <MarkdownTypography>
             Posted Feb 10, 2024 By Akash Jadhav
-          </Typography>
-          <Typography variant="subtitle1">By Akash Jadhav</Typography>
+          </MarkdownTypography>
+          <MarkdownTypography>By Akash Jadhav</MarkdownTypography>
           <ImageList cols={1}>
             <ImageListItem>
-              <img src="https://ghchart.rshah.org/gambitier" />
+              <img
+                src="https://ghchart.rshah.org/gambitier"
+                alt="GitHub chart"
+              />
             </ImageListItem>
           </ImageList>
-          <Typography>
+          <MarkdownTypography>
             Embarking on the journey of open source contributions has been an
             exhilarating experience for me. In this blog post, I'll share some
             highlights of my recent contributions to various projects that
             resonate with my passion for technology and collaboration.
-          </Typography>
+          </MarkdownTypography>
         </Stack>
       </CardContent>
       <CardHeader
-        title={<Typography variant="h6">Elsa Workflows</Typography>}
+        title={<MarkdownTypography>Elsa Workflows</MarkdownTypography>}
       />
       <CardContent>
-        <Typography>
+        <MarkdownTypography>
           Elsa is a robust workflow library designed for executing workflows
           within any.NET application. It provides flexibility in defining
           workflows through C# code, a visual designer, or specifying workflows
           in JSON format.
-        </Typography>
+        </MarkdownTypography>
       </CardContent>
-      <CardHeader title={<Typography variant="h6">Pull Requests</Typography>} />
+      <CardHeader
+        title={<MarkdownTypography>Pull Requests</MarkdownTypography>}
+      />
       <CardContent>
-        <Typography variant="h6">
+        <MarkdownTypography>
           1. Allow Database Schema Names to be Editable
-        </Typography>
-        <Typography>
+        </MarkdownTypography>
+        <MarkdownTypography>
           • Description: This contribution introduces the capability to edit
           database schema names within Elsa.
-        </Typography>
-        <Typography variant="h6">2. MySQL Support</Typography>
-        <Typography>
+        </MarkdownTypography>
+        <MarkdownTypography>2. MySQL Support</MarkdownTypography>
+        <MarkdownTypography>
           • Description: Added support for MySQL, enhancing the compatibility of
           Elsa workflows.
-        </Typography>
-        <Typography variant="h6">
+        </MarkdownTypography>
+        <MarkdownTypography>
           3. Docker Image: Configurable CORS Policy
-        </Typography>
-        <Typography>
+        </MarkdownTypography>
+        <MarkdownTypography>
           • Description: Implemented a feature to make CORS policy in the Docker
-        </Typography>
+        </MarkdownTypography>
       </CardContent>
       {sourceData.map((data, index) => (
         <Box key={index}>
           <CardHeader
-            title={<Typography variant="h6">{data.title}</Typography>}
+            title={<MarkdownTypography>{data.title}</MarkdownTypography>}
           />
           <CardContent>
-            <Typography>{data.desc}</Typography>
-            <Typography variant="subtitle1">{data.issue}</Typography>
-            <Typography variant="h6">{data.issueTitle}</Typography>
-            <Typography>{data.issueDesc}</Typography>
+            <MarkdownTypography>{data.desc}</MarkdownTypography>
+            <MarkdownTypography>{data.issue}</MarkdownTypography>
+            <MarkdownTypography>{data.issueTitle}</MarkdownTypography>
+            <ReactMarkdown>{data.issueDesc}</ReactMarkdown>
           </CardContent>
         </Box>
       ))}
